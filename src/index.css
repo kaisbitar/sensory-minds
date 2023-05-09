@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  padding: 0;
+}
+
+.celebrate {
+  background: #7ee70df0;
+  font-size: 40px;
+  font-family: sans-serif;
+  text-align: center;
+}
