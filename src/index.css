@@ -3,12 +3,8 @@
 @tailwind utilities;
 
 #root {
-  padding: 0;
-}
-
-.celebrate {
-  background: #7ee70df0;
-  font-size: 40px;
-  font-family: sans-serif;
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }

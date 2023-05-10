@@ -1,3 +1,4 @@
+// Define rows and cols of winning arrays
 const rows = [
   [0, 1, 2, 3, 4],
   [5, 6, 7, 8, 9],
@@ -7,7 +8,6 @@ const rows = [
   [0, 6, 12, 18, 24], // diagonal from top-left to bottom-right
   [4, 8, 12, 16, 20],
 ];
-
 const cols = [
   [0, 5, 10, 15, 20],
   [1, 6, 11, 16, 21],
@@ -16,18 +16,24 @@ const cols = [
   [4, 9, 14, 19, 24]
 ];
 
+// Check for winning patterns in selected indices
 const checkWinningPattern = (selectedIndices) => {
   if (selectedIndices.length < 5) {
     return []
   }
+
+  // Convert object keys to numbers
   const selected = Object.keys(selectedIndices).map(Number);
   const winningPatterns = [];
+
+  // Check for winning patterns in rows
   for (const row of rows) {
     if (checkSubset(selected, row)) {
       winningPatterns.push(row);
     }
   }
 
+  // Check for winning patterns in columns
   for (const col of cols) {
     if (checkSubset(selected, col)) {
       winningPatterns.push(col);
@@ -37,10 +43,11 @@ const checkWinningPattern = (selectedIndices) => {
   return winningPatterns;
 }
 
+// Check if subset array is present in parent array
 const checkSubset = (parentArray, subsetArray) => {
   return subsetArray.every((el) => {
     return parentArray.includes(el)
   })
 }
 
-export default checkWinningPattern
+export default checkWinningPattern;

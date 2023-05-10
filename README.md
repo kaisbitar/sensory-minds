@@ -1,4 +1,4 @@
-# sensory-minds
+# Sensory Minds
 
 # Bingo Board
 

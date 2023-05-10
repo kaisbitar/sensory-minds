@@ -1,4 +1,4 @@
-const bingoBoard = [
+const cards = [
   "CSS Sassy Pants",
   "Reacting Responsibly",
   "JavaScript Sorcery",
@@ -25,4 +25,5 @@ const bingoBoard = [
   "Fabulous Framework Feats",
   "Daring DevTools Delight"
 ]
-export default bingoBoard
+//Shuffle the array of cards
+export default cards.sort(() => 0.5 - Math.random())
