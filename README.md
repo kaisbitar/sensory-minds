@@ -1,8 +1,4 @@
 # sensory-minds
-<<<<<<< HEAD
-# sensory-minds
-=======
->>>>>>> aeb3810bf58a17417f15715318ba8cc37cb029d9
 
 # Bingo Board
 
