@@ -5,35 +5,33 @@ import cards from '../constants/cards'
 import { useState } from 'react';
 
 const BingoBoard = () => {
-  // set initial states
   const [celebrate, setCelebrate] = useState(false)
   const [cellMapper, setCellMapper] = useState({ 12: true }); // mark center cell as true
   const [winningArrays, setWinningArray] = useState([])
 
-  // function to handle cell click event
   const cellClickHandler = (index, status) => {
-    setCelebrate(false) // reset celebration state
+    setCelebrate(false)
     if (!status) {
       delete cellMapper[index] // if cell is unchecked, remove it from mapper
       return
     }
 
     setCellMapper(() => {
-      let tempCellMapper = cellMapper // create a copy of cell mapper
-      tempCellMapper[index] = true // mark the cell as true
+      let tempCellMapper = cellMapper
+      tempCellMapper[index] = true
       return tempCellMapper // return the updated mapper
     })
 
-    let tempWinningArray = winningArrays // create a copy of winning array
+    let tempWinningArray = winningArrays
     setWinningArray(() => {
       tempWinningArray = (checkWinningPattern(cellMapper)) // check for winning patterns and update winning array
-      return tempWinningArray // return the updated winning array
+      return tempWinningArray
     })
 
     // check if current index is part of any winning pattern
     for (let i = 0; i < tempWinningArray.length; i++) {
       if (tempWinningArray[i].includes(index)) {
-        setCelebrate(true) // set celebrate state to true for celebration animation
+        setCelebrate(true)
         break
       }
     }
@@ -47,7 +45,7 @@ const BingoBoard = () => {
       boardCells.push(
         <Cell
           key={index}
-          cellData={cards[index]} // set card data for cell
+          cellData={cards[index]}
           cellIndex={index}
           passStatusToBoard={cellClickHandler} // pass click event handler to cell
         />

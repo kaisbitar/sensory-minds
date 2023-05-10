@@ -14,6 +14,19 @@ To run the application, you need to have Node.js and npm installed on your compu
 
 Then, open your browser and go to `http://localhost:3000` to see the app running.
 
+## Topic
+
+The choice of a cheeky frontend development topic for the cells in the Bingo game was intentional to add an element of fun and humor to the application. It not only adds a playful tone to the game but also engages frontend developers who may recognize some of the popular frontend development references used in the cells.
+
+## Why TailwindCSS
+
+TailwindCSS was chosen for this project because it's light weight and it provides a fast and efficient way to style components without having to write custom CSS from scratch. It also offers a wide range of pre-built styles that make it easy to create a consistent and visually appealing design.
+
+## Randomized Winning Chances
+
+To ensure that multiple players have an equal chance of winning, the application shuffles the bingo board on every page refresh. This guarantees that no player has an advantage over the others, as the position of the winning patterns is randomized for each player. By shuffling the cards, the application provides a fair and enjoyable experience for all players.
+
+
 ## How to use
 
 The application displays a 5x5 grid of cells, each containing a cheeky frontend development reference. 

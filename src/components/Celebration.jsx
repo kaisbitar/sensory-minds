@@ -2,20 +2,18 @@ import { useEffect, useState } from 'react';
 
 // Component for displaying a winning celebration
 const Celebration = ({ celebrate }) => {
-
-  // Set initial state of class to show the component
-  const [celebrateClass, setCelebrateClass] = useState('block')
+  const [celebrateClass, setCelebrateClass] = useState('')
 
   useEffect(() => {
     // If celebrate is true, add animation class and then remove it after 1600ms
     if (celebrate) {
-      setCelebrateClass(' animate-spin pb-96 z-10 relative')
-      setTimeout(() => { setCelebrateClass('block') }, 2000)
+      setCelebrateClass('animate-spin z-10 relative')
+      setTimeout(() => { setCelebrateClass('') }, 2000)
       return
     }
   }, [celebrate])
 
-  // Return the component with dynamic class and some text in different colors
+  // Return the component with dynamic class and BINGO text in different colors
   return (
     <div className={`${celebrateClass} grid grid-cols-5 gap-1  text-center transition ease-in-out delay-150 text-xl`}>
       <span className={`bg-white border border-black p-2 w-12 m-auto font-bold rounded-full mb-5 text-blue-600`}>B</span>
