@@ -58,7 +58,7 @@ const BingoBoard = () => {
   // render bingo board
   return (
     <>
-      <div className='top-0 absolute bg-white p-2 mt-1 font-bold'>Bingo Count: {winningArrays.length}</div>
+      <div className='top-0 hidden sm:block absolute bg-white p-2 mt-1 font-bold'>Bingo Count: {winningArrays.length}</div>
       <Celebration celebrate={celebrate} />
       <div className='
         grid 
