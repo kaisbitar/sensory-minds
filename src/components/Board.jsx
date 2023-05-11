@@ -16,7 +16,7 @@ const BingoBoard = () => {
       let tempCellMapper = { ...cellMapper }
       delete tempCellMapper[index]
 
-      setCellMapper(tempCellMapper); // if cell is unchecked, remove it from mapper
+      setCellMapper(tempCellMapper);
       return
     }
 
@@ -26,7 +26,7 @@ const BingoBoard = () => {
     setCellMapper(tempCellMapper);
 
     let tempWinningArray = { ...winningArrays };
-    tempWinningArray = checkWinningPattern(tempCellMapper) // check for winning patterns and update winning array
+    tempWinningArray = checkWinningPattern(tempCellMapper)
 
     setWinningArray(tempWinningArray)
 
@@ -39,7 +39,6 @@ const BingoBoard = () => {
     }
   }
 
-  // create board cells from constants
   const boardCells = [];
   for (let row = 0; row < 5; row++) {
     for (let col = 0; col < 5; col++) {
