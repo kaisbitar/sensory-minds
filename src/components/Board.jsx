@@ -11,22 +11,24 @@ const BingoBoard = () => {
 
   const cellClickHandler = (index, status) => {
     setCelebrate(false)
+
     if (!status) {
-      delete cellMapper[index] // if cell is unchecked, remove it from mapper
+      let tempCellMapper = { ...cellMapper }
+      delete tempCellMapper[index]
+
+      setCellMapper(tempCellMapper); // if cell is unchecked, remove it from mapper
       return
     }
 
-    setCellMapper(() => {
-      let tempCellMapper = cellMapper
-      tempCellMapper[index] = true
-      return tempCellMapper // return the updated mapper
-    })
+    let tempCellMapper = { ...cellMapper }
+    tempCellMapper[index] = true;
 
-    let tempWinningArray = winningArrays
-    setWinningArray(() => {
-      tempWinningArray = (checkWinningPattern(cellMapper)) // check for winning patterns and update winning array
-      return tempWinningArray
-    })
+    setCellMapper(tempCellMapper);
+
+    let tempWinningArray = { ...winningArrays };
+    tempWinningArray = checkWinningPattern(tempCellMapper) // check for winning patterns and update winning array
+
+    setWinningArray(tempWinningArray)
 
     // check if current index is part of any winning pattern
     for (let i = 0; i < tempWinningArray.length; i++) {
