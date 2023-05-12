@@ -57,12 +57,12 @@ const BingoBoard = () => {
   // render bingo board
   return (
     <>
-      <div className='top-0 hidden sm:block absolute bg-white p-2 mt-1 font-bold'>Bingo Count: {winningArrays.length}</div>
+      <div className='mb-4 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 ml-1 font-bold'>Bingo Count: {winningArrays.length}</div>
       <Celebration celebrate={celebrate} />
       <div className='
         grid 
         grid-cols-5 
-        md:gap-1
+        h-[70vh]
         shadow-xl'
       >
         {boardCells}

@@ -28,9 +28,9 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
         text-center 
         text-sm 
         sm:text-base 
-        border 
-        border-black 
-        h-32 
+        ring-inset
+        ring-1
+        h-full
         hover:opacity-50 
         ${cellClass}`
       }

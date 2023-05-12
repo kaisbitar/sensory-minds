@@ -2,14 +2,14 @@ import Board from './components/Board'
 
 function App() {
   return (
-    <div className='pt-12 md:p-16'>
+    <div className='sm:p-20 p-2 sm:pt-10'>
       <a className='
         hidden
         sm:block
         absolute
-        right-16
+        right-24
         top-2
-        text-2xl 
+        text-base 
         text-blue-600
         underline'
         target="_blank"
