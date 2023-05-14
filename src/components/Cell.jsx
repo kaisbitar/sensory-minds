@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
   // Declare and initialize state variables
@@ -8,7 +9,7 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
   // Use effect to set the cell class based on whether it's selected or not
   useEffect(() => {
     if (selected && cellIndex !== 12) {
-      setCellClass('bg-sky-400 line-through ')
+      setCellClass('bg-sky-400 line-through text-slate-500')
       return
     }
     if (cellIndex === 12) {
@@ -19,19 +20,21 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
   }, [selected, cellIndex])
 
   return (
-    <button
+    <motion.button
+      whileTap={selected ? { scale: [1, 0.5], zIndex: 100 } : { scale: [1, 1.7], zIndex: 100 }}
+      whileHover={{ zIndex: 100 }}
       className={`
         relative 
         cursor-pointer 
         transition ease-in 
         duration-200 
         text-center 
-        text-sm 
+        text-[13px] 
         sm:text-base 
         ring-inset
         ring-1
         h-full
-        hover:opacity-50 
+        hover:opacity-80 
         ${cellClass}`
       }
       onClick={() => {
@@ -42,7 +45,7 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
     >
       <div className='absolute right-0 top-0 h-8 w-8'>{cellIndex}</div>
       {cellData}
-    </button>
+    </motion.button>
   )
 }
 

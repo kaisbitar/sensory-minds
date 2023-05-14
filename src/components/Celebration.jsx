@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
-
+import { motion } from 'framer-motion'
+import Letters from './Letters'
 // Component for displaying a winning celebration
 const Celebration = ({ celebrate }) => {
-  const [celebrateClass, setCelebrateClass] = useState('')
 
-  useEffect(() => {
-    // If celebrate is true, add animation class and then remove it after 1600ms
-    if (celebrate) {
-      setCelebrateClass('animate-ping bg-sky-100')
-      setTimeout(() => { setCelebrateClass('') }, 2000)
-      return
-    }
-  }, [celebrate])
+  const variants = {
+    on: { scale: [1, 0, 1.3, 1] },
+    off: {},
+  }
+
+  const bingo = 'BINGO'
+  const letters = []
+  const colors = ['yellow-600', 'blue-600', 'lime-600', 'indigo-600', 'red-500']
+  for (let i = 0; i < bingo.split('').length; i++) {
+    letters.push(
+      <Letters key={i} letter={bingo[i]} color={colors[i]} />
+    )
+  }
 
   // Return the component with dynamic class and BINGO text in different colors
   return (
-    <div className={` grid grid-cols-5 gap-1  text-center transition ease-in-out delay-150 text-xl`}>
-      <span className={`${celebrateClass} bg-white border border-black p-2 w-12 m-auto font-bold rounded-full mb-5 text-blue-600`}>B</span>
-      <span className={`${celebrateClass} bg-white border border-black p-2 w-12 m-auto font-bold rounded-full mb-5 text-green-600`}>I</span>
-      <span className={`${celebrateClass} bg-white border border-black p-2 w-12 m-auto font-bold rounded-full mb-5 text-red-600`}>N</span>
-      <span className={`${celebrateClass} bg-white border border-black p-2 w-12 m-auto font-bold rounded-full mb-5 text-yellow-600`}>G</span>
-      <span className={`${celebrateClass} bg-white border border-black p-2 w-12 m-auto font-bold rounded-full mb-5 text-purple-600`}>O</span>
-    </div>
+    <motion.div animate={celebrate ? 'on' : 'off'} variants={variants} className={`grid grid-cols-5 gap-1  text-center text-xl`}>
+      {letters}
+    </motion.div>
   )
 }
 

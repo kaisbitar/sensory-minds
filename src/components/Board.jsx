@@ -3,6 +3,7 @@ import Celebration from './Celebration';
 import checkWinningPattern from '../functions/winningCalculator'
 import cards from '../constants/cards'
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const BingoBoard = () => {
   const [celebrate, setCelebrate] = useState(false)
@@ -12,28 +13,28 @@ const BingoBoard = () => {
   const cellClickHandler = (index, status) => {
     setCelebrate(false)
 
+    let tempCellMapper = { ...cellMapper }
     if (!status) {
-      let tempCellMapper = { ...cellMapper }
       delete tempCellMapper[index]
-
       setCellMapper(tempCellMapper);
+
       return
     }
 
-    let tempCellMapper = { ...cellMapper }
     tempCellMapper[index] = true;
-
     setCellMapper(tempCellMapper);
 
     let tempWinningArray = { ...winningArrays };
     tempWinningArray = checkWinningPattern(tempCellMapper)
-
     setWinningArray(tempWinningArray)
 
     // check if current index is part of any winning pattern
     for (let i = 0; i < tempWinningArray.length; i++) {
       if (tempWinningArray[i].includes(index)) {
         setCelebrate(true)
+        setTimeout(() => {
+          setCelebrate(false)
+        }, 500)
         break
       }
     }
@@ -57,16 +58,19 @@ const BingoBoard = () => {
   // render bingo board
   return (
     <>
-      <div className='mb-4 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 ml-1 font-bold'>Bingo Count: {winningArrays.length}</div>
+      <div className='mb-10 ml-0 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 font-bold'>Bingo Count: {winningArrays.length}</div>
       <Celebration celebrate={celebrate} />
-      <div className='
+      <motion.div
+
+        className='
         grid 
         grid-cols-5 
         h-[70vh]
-        shadow-xl'
+        shadow-xl
+          '
       >
         {boardCells}
-      </div>
+      </motion.div>
     </>
   );
 };
