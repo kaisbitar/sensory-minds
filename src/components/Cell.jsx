@@ -29,11 +29,12 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
         transition ease-in 
         duration-200 
         text-center 
-        text-[13px] 
+        text-[11px] 
         sm:text-base 
         ring-inset
         ring-1
         h-full
+        sm:p-2
         hover:opacity-80 
         ${cellClass}`
       }
