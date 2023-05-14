@@ -8,7 +8,7 @@ const Celebration = ({ celebrate }) => {
       scale: [1, 0, 1],
       rotate: [60, -60]
     },
-    off: {},
+    off: { rotate: 0 },
   }
 
   const bingo = 'BINGO'

@@ -58,7 +58,7 @@ const BingoBoard = () => {
   // render bingo board
   return (
     <>
-      <div className='mb-10 ml-0 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 font-bold'>Bingo Count: {winningArrays.length}</div>
+      <div className='mb-3 ml-0 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 font-bold'>Bingo Count: {winningArrays.length}</div>
       <Celebration celebrate={celebrate} />
       <motion.div
         className='

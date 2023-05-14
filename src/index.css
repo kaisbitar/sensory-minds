@@ -2,14 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  overflow: hidden;
-}
 
 #root {
   width: 100vw;
   height: 100vh;
   background-color: #8EC5FC;
+  overflow: hidden;
   background: linear-gradient(45deg, rgb(26, 1, 117) 0%, rgba(225, 5, 34, 0) 70%) repeat scroll 0% 0%,
     linear-gradient(135deg, rgba(225, 5, 152, 0.314) 10%, rgba(49, 5, 209, 0) 80%) repeat scroll 0% 0%,
     linear-gradient(225deg, hsla(179, 81%, 45%, 1) 10%, rgba(10, 219, 216, 0) 80%) repeat scroll 0% 0%,
