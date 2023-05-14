@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from "framer-motion"
 
 const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
   // Declare and initialize state variables
@@ -20,10 +20,11 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
   }, [selected, cellIndex])
 
   return (
-    <motion.button
-      whileTap={selected ? { scale: [1, 0.5], zIndex: 100 } : { scale: [1, 1.7], zIndex: 100 }}
-      whileHover={{ zIndex: 100 }}
-      className={`
+    <LazyMotion features={domAnimation}>
+      <m.button
+        whileTap={selected ? { scale: [1, 0.5], zIndex: 100 } : { scale: [1, 1.7], zIndex: 100 }}
+        whileHover={{ zIndex: 100 }}
+        className={`
         relative 
         cursor-pointer 
         transition ease-in 
@@ -37,16 +38,17 @@ const Cell = ({ cellIndex, cellData, passStatusToBoard }) => {
         sm:p-2
         hover:opacity-80 
         ${cellClass}`
-      }
-      onClick={() => {
-        if (cellIndex === 12) return
-        passStatusToBoard(cellIndex, !selected)
-        setSelected(!selected)
-      }}
-    >
-      <div className='absolute right-0 top-0 h-8 w-8'>{cellIndex}</div>
-      {cellData}
-    </motion.button>
+        }
+        onClick={() => {
+          if (cellIndex === 12) return
+          passStatusToBoard(cellIndex, !selected)
+          setSelected(!selected)
+        }}
+      >
+        <div className='absolute right-0 top-0 h-8 w-8'>{cellIndex}</div>
+        {cellData}
+      </m.button>
+    </LazyMotion>
   )
 }
 

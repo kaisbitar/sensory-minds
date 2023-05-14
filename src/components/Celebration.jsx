@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { LazyMotion, domAnimation, m } from "framer-motion"
 import Letters from './Letters'
 // Component for displaying a winning celebration
 const Celebration = ({ celebrate }) => {
@@ -26,13 +26,15 @@ const Celebration = ({ celebrate }) => {
 
   // Return the component with dynamic class and BINGO text in different colors
   return (
-    <motion.div
-      animate={celebrate ? 'on' : 'off'}
-      variants={variants}
-      className={`grid grid-cols-5 gap-1  text-center text-xl`}
-    >
-      {letters}
-    </motion.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        animate={celebrate ? 'on' : 'off'}
+        variants={variants}
+        className={`grid grid-cols-5 gap-1  text-center text-xl`}
+      >
+        {letters}
+      </m.div>
+    </LazyMotion >
   )
 }
 
