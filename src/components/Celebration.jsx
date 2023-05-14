@@ -6,7 +6,7 @@ const Celebration = ({ celebrate }) => {
   const variants = {
     on: {
       scale: [1, 0, 1],
-      rotate: [60, -60]
+      rotate: [10, -10]
     },
     off: { rotate: 0 },
   }
