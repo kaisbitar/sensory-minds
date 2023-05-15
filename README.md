@@ -22,12 +22,6 @@ Vite was used as the bundler for this project due to its fast build times and ho
 
 TailwindCSS was chosen for this project because it's light weight and it provides a fast and efficient way to style components without having to write custom CSS from scratch. It also offers a wide range of pre-built styles that make it easy to create a consistent and visually appealing design.
 
-## Framer Motion
-
-Framer Motion is a powerful library for adding animation and gesture support to React applications. It allows developers to easily create high-quality animations with minimal code, and provides a wide range of tools for customizing and fine-tuning animations.
-
-In this project, Framer Motion was used to add intialization animations and celebration animations when the user achieves a winning pattern on the bingo board. The library's ease of use and flexibility made it the perfect choice for implementing these animations.
-
 ## Topic
 
 The choice of a cheeky frontend development topic for the cells in the Bingo game was intentional to add an element of fun and humor to the application. It not only adds a playful tone to the game but also engages frontend developers who may recognize some of the popular frontend development references used in the cells.

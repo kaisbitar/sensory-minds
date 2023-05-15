@@ -1,15 +1,16 @@
-import { LazyMotion, domAnimation, m } from "framer-motion"
+import { useState, useEffect } from 'react'
 import Letters from './Letters'
 // Component for displaying a winning celebration
 const Celebration = ({ celebrate }) => {
+  const [celebrateClass, setCelebrateClass] = useState('')
 
-  const variants = {
-    on: {
-      scale: [1, 0, 1],
-      rotate: [10, -10]
-    },
-    off: { rotate: 0 },
-  }
+  useEffect(() => {
+    if (celebrate) {
+      setCelebrateClass('celebrate')
+      return
+    }
+    setCelebrateClass('')
+  }, [celebrate])
 
   const bingo = 'BINGO'
   const letters = []
@@ -26,15 +27,9 @@ const Celebration = ({ celebrate }) => {
 
   // Return the component with dynamic class and BINGO text in different colors
   return (
-    <LazyMotion features={domAnimation}>
-      <m.div
-        animate={celebrate ? 'on' : 'off'}
-        variants={variants}
-        className={`grid grid-cols-5 gap-1  text-center text-xl`}
-      >
-        {letters}
-      </m.div>
-    </LazyMotion >
+    <div className={`${celebrateClass} grid grid-cols-5 gap-1  text-center text-xl`}>
+      {letters}
+    </div>
   )
 }
 
