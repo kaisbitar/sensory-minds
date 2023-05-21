@@ -1,48 +1,62 @@
-import Cell from './Cell'
-import Celebration from './Celebration';
-import checkWinningPattern from '../functions/winningCalculator'
-import cards from '../constants/cards'
-import { useState } from 'react';
+import Cell from "./Cell";
+import Celebration from "./Celebration";
+import checkWinningPattern from "../functions/winningCalculator";
+import cards from "../constants/cards";
+import { useState } from "react";
 
 const BingoBoard = () => {
-  const [celebrate, setCelebrate] = useState(false)
+  const [celebrate, setCelebrate] = useState(false);
   const [cellMapper, setCellMapper] = useState({ 12: true }); // mark center cell as true
-  const [winningArrays, setWinningArray] = useState([])
+  const [winningArrays, setWinningArray] = useState([]);
 
   const cellClickHandler = (index, status) => {
-    setCelebrate(false)
+    setCelebrate(false);
 
-    let tempCellMapper = { ...cellMapper }
-    let tempWinningArray = { ...winningArrays };
+    const updatedCellMapper = { ...cellMapper };
+    let updatedWinningArray = { ...winningArrays };
 
     if (!status) {
-      delete tempCellMapper[index]
-      setCellMapper(tempCellMapper);
+      delete updatedCellMapper[index];
+      setCellMapper(updatedCellMapper);
 
-      tempWinningArray = checkWinningPattern(tempCellMapper)
-      setWinningArray(tempWinningArray)
+      updatedWinningArray = checkWinningPattern(updatedCellMapper);
+      setWinningArray(updatedWinningArray);
 
-      return
+      return;
     }
 
-    tempCellMapper[index] = true;
-    setCellMapper(tempCellMapper);
+    updatedCellMapper[index] = true;
+    setCellMapper(updatedCellMapper);
 
-    tempWinningArray = checkWinningPattern(tempCellMapper)
-    setWinningArray(tempWinningArray)
+    updatedWinningArray = checkWinningPattern(updatedCellMapper);
+    setWinningArray(updatedWinningArray);
 
     // check if current index is part of any winning pattern
-    for (let i = 0; i < tempWinningArray.length; i++) {
-      if (tempWinningArray[i].includes(index)) {
-        setCelebrate(true)
+    for (let i = 0; i < updatedWinningArray.length; i++) {
+      if (updatedWinningArray[i].includes(index)) {
+        setCelebrate(true);
         setTimeout(() => {
-          setCelebrate(false)
-        }, 500)
-        break
+          setCelebrate(false);
+        }, 500);
+        return;
       }
     }
-  }
+  };
+  const boardCells = createCells(cellClickHandler);
 
+  // render bingo board
+  return (
+    <>
+      <div className="mb-3 ml-0 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 font-bold">
+        Bingo Count: {winningArrays.length}
+      </div>
+      <Celebration celebrate={celebrate} />
+      <div className="grid grid-cols-5 h-[70vh] shadow-sml">{boardCells}</div>
+    </>
+  );
+};
+
+const createCells = (cellClickHandler) => {
   const boardCells = [];
   for (let row = 0; row < 5; row++) {
     for (let col = 0; col < 5; col++) {
@@ -57,19 +71,7 @@ const BingoBoard = () => {
       );
     }
   }
-
-  // render bingo board
-  return (
-    <>
-      <div className='mb-3 ml-0 text-sm sm:text-base m-auto relative sm:block w-36 bg-white p-2 ring-2 font-bold'>
-        Bingo Count: {winningArrays.length}
-      </div>
-      <Celebration celebrate={celebrate} />
-      <div className='grid grid-cols-5 h-[70vh] shadow-sml'>
-        {boardCells}
-      </div>
-    </>
-  );
+  return boardCells;
 };
 
-export default BingoBoard
+export default BingoBoard;
